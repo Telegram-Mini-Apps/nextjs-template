@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@tma.js/sdk-react':
-    specifier: ^0.5.0
-    version: 0.5.0(@types/react@18.2.34)(react@18.2.0)
+    specifier: ^1.1.0
+    version: 1.1.0(@types/react@18.2.34)(react@18.2.0)
   next:
     specifier: 13.5.6
     version: 13.5.6(react-dom@18.2.0)(react@18.2.0)
@@ -275,54 +275,8 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@tma.js/bridge@1.3.11:
-    resolution: {integrity: sha512-BBgXsfpVqS6pU1T9ZNchnDGQuvIcRp4AYIrEn7wU5a0g5EyJG6pkqleojmeYXvritD5pmcPifqKxLrOY6wULxw==}
-    dependencies:
-      '@tma.js/colors': 0.0.5
-      '@tma.js/event-emitter': 0.1.0
-      '@tma.js/logger': 0.0.5
-      '@tma.js/parsing': 0.1.3
-      '@tma.js/util-types': 0.0.3
-      '@tma.js/utils': 0.5.6
-    dev: false
-
-  /@tma.js/colors@0.0.5:
-    resolution: {integrity: sha512-2O4Z/2TzSuhlJhuIvGZTN/qt+XFADU+gGFtKp5dCEkarR0XvV4cDOs5VQC/gJc0Cy0qElkUIBgPhTOnKSUgRPA==}
-    dev: false
-
-  /@tma.js/event-emitter@0.1.0:
-    resolution: {integrity: sha512-06ximJ22jovIhxezHimPQP/McBzGEDoxBHdvko9671GmWR8KctYz0MPNCU+dfRX/gchWRBhAnP5ZOdHo8YZywQ==}
-    dependencies:
-      '@tma.js/util-types': 0.0.3
-    dev: false
-
-  /@tma.js/init-data@0.2.20:
-    resolution: {integrity: sha512-owXoAe0R/a37ppGOF3xu/We2QrkptnVGGkQhrW7cMYwfSTfzBjBs5lRVkBtPqCIrhel1i1I8u0kgasCfdhwOAg==}
-    dependencies:
-      '@tma.js/parsing': 0.1.3
-    dev: false
-
-  /@tma.js/launch-params@0.0.6:
-    resolution: {integrity: sha512-jogO0BI5k+KDckEX+LaPQS0xlZIzMNmACNliuNJwB0KVBhAnzh09VEPeFtOvjgzofHbBdtWydI5VJIU1Bwhj3w==}
-    dependencies:
-      '@tma.js/init-data': 0.2.20
-      '@tma.js/parsing': 0.1.3
-      '@tma.js/theme-params': 0.0.6
-    dev: false
-
-  /@tma.js/logger@0.0.5:
-    resolution: {integrity: sha512-9Nb1ODh27oJZ5XaajhLibu41elarRVuweEV8TTDmuOzLFL0C0fOlUu9FsETqor88+UOBKlKjvnbMnjMj/An9jw==}
-    dev: false
-
-  /@tma.js/parsing@0.1.3:
-    resolution: {integrity: sha512-pANGNtLfN19AMcL8eJlBEYPoY8sWr1T+62Z/FWu15YQLzZa2qfIXwBaJmCwoWCuO8aKCf2TzHh6OXKpuxiERBw==}
-    dependencies:
-      '@tma.js/colors': 0.0.5
-      '@tma.js/util-types': 0.0.3
-    dev: false
-
-  /@tma.js/sdk-react@0.5.0(@types/react@18.2.34)(react@18.2.0):
-    resolution: {integrity: sha512-2aE6t4klGoYad0kky3582nKqnRZeSe9Ug365WiE+ewZR+xQ1bPb2CcSBg0p6Nvwc2ohq2IT83xO/G7MaFG8PHQ==}
+  /@tma.js/sdk-react@1.1.0(@types/react@18.2.34)(react@18.2.0):
+    resolution: {integrity: sha512-BEE6Ij5ONyNfMwHu0NxmMLszBAIc9wFncUPtH3Ip+lCokjHiVh+Xz7x/CX2jiDQS2agVzLpzAhoAVpZd++X9ig==}
     peerDependencies:
       '@types/react': ^17.0.0 || ^18.0.0
       react: ^17.0.0 || ^18.0.0
@@ -330,41 +284,13 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@tma.js/bridge': 1.3.11
-      '@tma.js/launch-params': 0.0.6
-      '@tma.js/sdk': 0.12.9
-      '@tma.js/theme-params': 0.0.6
+      '@tma.js/sdk': 1.2.0
       '@types/react': 18.2.34
       react: 18.2.0
     dev: false
 
-  /@tma.js/sdk@0.12.9:
-    resolution: {integrity: sha512-XtGPJwtRqv2+f65QCziObyaULYnmr9B9gN+++uAuLatuqBWThN2RPEvCNKnufliH8N4ezOzmjA1euu3eAZa/8w==}
-    dependencies:
-      '@tma.js/bridge': 1.3.11
-      '@tma.js/colors': 0.0.5
-      '@tma.js/event-emitter': 0.1.0
-      '@tma.js/init-data': 0.2.20
-      '@tma.js/launch-params': 0.0.6
-      '@tma.js/parsing': 0.1.3
-      '@tma.js/theme-params': 0.0.6
-      '@tma.js/util-types': 0.0.3
-      '@tma.js/utils': 0.5.6
-    dev: false
-
-  /@tma.js/theme-params@0.0.6:
-    resolution: {integrity: sha512-58ERJzBTtiGOWRO99WGsmq0ygAC1LftHqAzFnLAnHLfBRI0T0OnOsHXBt+Ceb7KRq9+sEnySfUd+pf8YmX+CZw==}
-    dependencies:
-      '@tma.js/colors': 0.0.5
-      '@tma.js/parsing': 0.1.3
-    dev: false
-
-  /@tma.js/util-types@0.0.3:
-    resolution: {integrity: sha512-9hYutR7Ee4F3dgZlztTL31w8ljs3loRQ0pnzox0EG/Ey2CmbXTbLc9UIJuXzyKBiJKNJEoB3NNoAIy7mBaLRIQ==}
-    dev: false
-
-  /@tma.js/utils@0.5.6:
-    resolution: {integrity: sha512-aNn3w6uzHNmqET9g4CRRtazOmMrdwboWrIXKdkNMMlC5hrNwV+Z09dPeZzQmaqUS7hvbwI9lMF9cUW4bJCaeGw==}
+  /@tma.js/sdk@1.2.0:
+    resolution: {integrity: sha512-Ok3qx2LABy6I5nImGpippturTTsi87FR93OuEUv0zV2iuyGmyrBZ51kKlVOq+jLLYVu5KZLTSI7F4IR43AlIgA==}
     dev: false
 
   /@types/json5@0.0.29:

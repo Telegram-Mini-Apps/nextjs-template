@@ -1,54 +1,33 @@
 'use client';
 
-import { useMemo, type PropsWithChildren } from 'react';
-import { SDKProvider, useSDK } from '@tma.js/sdk-react';
+import type { PropsWithChildren } from 'react';
+import { SDKProvider, DisplayGate } from '@tma.js/sdk-react';
 
-/**
- * This component is the layer controlling the application display. It displays
- * application in case, the SDK is initialized, displays an error if something
- * went wrong, and a loader if the SDK is warming up.
- */
-function DisplayGate({ children }: PropsWithChildren) {
-  const { didInit, components, error } = useSDK();
-  const errorMessage = useMemo<null | string>(() => {
-    if (!error) {
-      return null;
-    }
+interface SDKProviderErrorProps {
+  error: unknown;
+}
 
-    return error instanceof Error ? error.message : 'Unknown error';
-  }, [error]);
+function SDKProviderError({ error }: SDKProviderErrorProps) {
+  return (
+    <div>
+      Oops. Something went wrong.
+      <blockquote>
+        <code>
+          {error instanceof Error
+            ? error.message
+            : JSON.stringify(error)}
+        </code>
+      </blockquote>
+    </div>
+  );
+}
 
-  // There were no calls of SDK's init function. It means, we did not
-  // even try to do it.
-  if (!didInit) {
-    return <div>SDK init function is not yet called.</div>;
-  }
+function SDKProviderLoading() {
+  return <div>SDK is loading.</div>;
+}
 
-  // Error occurred during SDK init.
-  if (error !== null) {
-    return (
-      <>
-        <p>
-          SDK was unable to initialize. Probably, current application is being used
-          not in Telegram Web Apps environment.
-        </p>
-        <blockquote>
-          <p>{errorMessage}</p>
-        </blockquote>
-      </>
-    );
-  }
-
-  // If components is null, it means, SDK is not ready at the
-  // moment and currently initializing. Usually, it takes like
-  // several milliseconds or something like that, but we should
-  // have this check.
-  if (components === null) {
-    return <div>Loading..</div>;
-  }
-
-  // Safely render application.
-  return children;
+function SDKInitialState() {
+  return <div>Waiting for initialization to start.</div>;
 }
 
 /**
@@ -56,8 +35,12 @@ function DisplayGate({ children }: PropsWithChildren) {
  */
 export function TmaSDKLoader({ children }: PropsWithChildren) {
   return (
-    <SDKProvider initOptions={{ debug: true, cssVars: true }}>
-      <DisplayGate>
+    <SDKProvider options={{ cssVars: true, acceptCustomStyles: true, async: true }}>
+      <DisplayGate
+        error={SDKProviderError}
+        loading={SDKProviderLoading}
+        initial={SDKInitialState}
+      >
         {children}
       </DisplayGate>
     </SDKProvider>
