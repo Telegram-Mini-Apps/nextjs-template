@@ -5,9 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@tma.js/sdk':
+    specifier: ^1.5.0
+    version: 1.5.0
   '@tma.js/sdk-react':
-    specifier: ^1.1.0
-    version: 1.1.0(@types/react@18.2.34)(react@18.2.0)
+    specifier: ^2.0.0
+    version: 2.0.0(@tma.js/sdk@1.5.0)(@types/react@18.2.34)(react@18.2.0)
   next:
     specifier: 13.5.6
     version: 13.5.6(react-dom@18.2.0)(react@18.2.0)
@@ -275,22 +278,23 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@tma.js/sdk-react@1.1.0(@types/react@18.2.34)(react@18.2.0):
-    resolution: {integrity: sha512-BEE6Ij5ONyNfMwHu0NxmMLszBAIc9wFncUPtH3Ip+lCokjHiVh+Xz7x/CX2jiDQS2agVzLpzAhoAVpZd++X9ig==}
+  /@tma.js/sdk-react@2.0.0(@tma.js/sdk@1.5.0)(@types/react@18.2.34)(react@18.2.0):
+    resolution: {integrity: sha512-RvfXMmawXITKTGFwNCf8+31wiQz3S//rQqsWLGyhgM6286myaS8Cx3CBDCcsbhsQDo7BV+p5CosGf/nJSO7MCQ==}
     peerDependencies:
+      '@tma.js/sdk': 1.5.0
       '@types/react': ^17.0.0 || ^18.0.0
       react: ^17.0.0 || ^18.0.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
     dependencies:
-      '@tma.js/sdk': 1.2.0
+      '@tma.js/sdk': 1.5.0
       '@types/react': 18.2.34
       react: 18.2.0
     dev: false
 
-  /@tma.js/sdk@1.2.0:
-    resolution: {integrity: sha512-Ok3qx2LABy6I5nImGpippturTTsi87FR93OuEUv0zV2iuyGmyrBZ51kKlVOq+jLLYVu5KZLTSI7F4IR43AlIgA==}
+  /@tma.js/sdk@1.5.0:
+    resolution: {integrity: sha512-sqbHOiPYZ6mHvP14akCqfAatUTsVbba+dozE10zZYRaRlzgPTmmaDGjRJnnJtPVVjeCNPzt6MaSwOPKyZDYvRg==}
     dev: false
 
   /@types/json5@0.0.29:
