@@ -1,6 +1,5 @@
-import { useInitData, useInitDataRaw } from '@tma.js/sdk-react';
 import { type ReactNode, useMemo } from 'react';
-import type { User } from '@tma.js/sdk';
+import { useInitData, useLaunchParams, type User } from '@tma.js/sdk-react';
 
 import { DisplayData, type DisplayDataRow } from '@/components/DisplayData/DisplayData';
 import { Link } from '@/components/Link/Link';
@@ -20,8 +19,8 @@ function getUserRows(user: User): DisplayDataRow[] {
 }
 
 export default function InitDataPage() {
+  const initDataRaw = useLaunchParams().initDataRaw;
   const initData = useInitData();
-  const initDataRaw = useInitDataRaw();
 
   const initDataRows = useMemo<DisplayDataRow[] | undefined>(() => {
     if (!initData || !initDataRaw) {

@@ -1,20 +1,19 @@
-import { classNames } from '@tma.js/sdk';
-import { useUtils } from '@tma.js/sdk-react';
+import { useUtils, classNames } from '@tma.js/sdk-react';
 import { type FC, type MouseEventHandler, type JSX, useCallback } from 'react';
-import { LinkProps as NextLinkProps, default as NextLink } from 'next/link';
+import { type LinkProps as NextLinkProps, default as NextLink } from 'next/link';
 
 import styles from './Link.module.css';
 
 export interface LinkProps extends NextLinkProps, Omit<JSX.IntrinsicElements['a'], 'href'> {
 }
 
-export const Link: FC<LinkProps> = (props) => {
-  const {
-    className,
-    onClick: propsOnClick,
-    href,
-  } = props;
-  const utils = useUtils();
+export const Link: FC<LinkProps> = ({
+  className,
+  onClick: propsOnClick,
+  href,
+  ...rest
+}) => {
+  const utils = useUtils({ ssr: { version: '7.0' } });
 
   const onClick = useCallback<MouseEventHandler<HTMLAnchorElement>>((e) => {
     propsOnClick?.(e);
@@ -42,7 +41,8 @@ export const Link: FC<LinkProps> = (props) => {
 
   return (
     <NextLink
-      {...props}
+      {...rest}
+      href={href}
       onClick={onClick}
       className={classNames(className, styles.root)}
     />

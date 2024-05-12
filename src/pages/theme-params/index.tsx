@@ -1,5 +1,4 @@
 import { useThemeParams } from '@tma.js/sdk-react';
-import type { FC } from 'react';
 
 import { DisplayData } from '@/components/DisplayData/DisplayData';
 import { Link } from '@/components/Link/Link';

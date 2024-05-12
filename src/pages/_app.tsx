@@ -1,39 +1,42 @@
-import { SDKProvider, DisplayGate, useBackButton, useLaunchParams } from '@tma.js/sdk-react';
-import { FC, useEffect, useMemo } from 'react';
-import { retrieveLaunchParams, setDebug } from '@tma.js/sdk';
+import {
+  SDKProvider,
+  useBackButton,
+  retrieveLaunchParams,
+  useMiniApp,
+  useThemeParams,
+  useViewport,
+  bindMiniAppCSSVars,
+  bindThemeParamsCSSVars, bindViewportCSSVars,
+} from '@tma.js/sdk-react';
+import { type FC, useEffect, useMemo } from 'react';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useRouter as useNavigationRouter } from 'next/navigation';
 
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+
 import './global.css';
 
-const Err: FC<{ error: unknown }> = ({ error }) => (
+const ErrorBoundaryError: FC<{ error: unknown }> = ({ error }) => (
   <div>
-    <p>An error occurred while initializing the SDK</p>
+    <p>An unhandled error occurred:</p>
     <blockquote>
       <code>
         {error instanceof Error
           ? error.message
-          : JSON.stringify(error)}
+          : typeof error === 'string'
+            ? error
+            : JSON.stringify(error)}
       </code>
     </blockquote>
   </div>
 );
 
-const Loading: FC = () => (
-  <div>Application is loading</div>
-);
-
 const BackButtonManipulator: FC = () => {
   const router = useRouter();
   const { back } = useNavigationRouter();
-  const bb = useBackButton();
-  console.log(useLaunchParams());
-
-  useEffect(() => {
-    console.log('Mounted');
-  } ,[]);
+  const bb = useBackButton({ ssr: { version: '7.0' } });
 
   useEffect(() => {
     if (router.pathname === '/') {
@@ -43,12 +46,50 @@ const BackButtonManipulator: FC = () => {
     }
   }, [router, bb]);
 
-  useEffect(() =>  bb.on('click', back), [bb, back]);
+  useEffect(() => bb.on('click', back), [bb, back]);
 
   return null;
 };
 
-export default function CustomApp({ pageProps, Component }: AppProps) {
+const App: FC<AppProps> = ({ pageProps, Component }) => {
+  // As long as this is not really important to specify some valid SSR values here, we are just
+  // specifying a stub.
+  const ssrStub = {
+    themeParams: {},
+    version: '7.0',
+    botInline: false,
+    platform: 'unknown',
+  };
+  const miniApp = useMiniApp({ ssr: ssrStub });
+  const themeParams = useThemeParams({ ssr: ssrStub });
+  const viewport = useViewport({ ssr: ssrStub });
+
+  useEffect(() => {
+    return bindMiniAppCSSVars(miniApp, themeParams);
+  }, [miniApp, themeParams]);
+
+  useEffect(() => {
+    return bindThemeParamsCSSVars(themeParams);
+  }, [themeParams]);
+
+  useEffect(() => {
+    if (viewport) {
+      return bindViewportCSSVars(viewport);
+    }
+  }, [viewport]);
+
+  return (
+    <>
+      <BackButtonManipulator/>
+      <Component {...pageProps}/>
+    </>
+  );
+};
+
+const Inner: FC<AppProps> = (props) => {
+  const debug = useMemo(() => {
+    return typeof window === 'undefined' ? false : retrieveLaunchParams().startParam === 'debug';
+  }, []);
   const manifestUrl = useMemo(() => {
     return typeof window === 'undefined'
       ? ''
@@ -56,20 +97,24 @@ export default function CustomApp({ pageProps, Component }: AppProps) {
   }, []);
 
   useEffect(() => {
-    if (retrieveLaunchParams().startParam === 'debug') {
-      setDebug(true);
+    if (debug) {
       import('eruda').then(lib => lib.default.init());
     }
-  }, []);
+  }, [debug]);
 
   return (
     <TonConnectUIProvider manifestUrl={manifestUrl}>
-      <SDKProvider options={{ acceptCustomStyles: true, cssVars: true, complete: true }}>
-        <DisplayGate error={Err} loading={Loading} initial={Loading}>
-          <BackButtonManipulator/>
-          <Component {...pageProps}/>
-        </DisplayGate>
+      <SDKProvider acceptCustomStyles debug={debug}>
+        <App {...props}/>
       </SDKProvider>
     </TonConnectUIProvider>
+  );
+};
+
+export default function CustomApp(props: AppProps) {
+  return (
+    <ErrorBoundary fallback={ErrorBoundaryError}>
+      <Inner {...props}/>
+    </ErrorBoundary>
   );
 };

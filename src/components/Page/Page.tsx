@@ -7,12 +7,10 @@ export interface PageProps extends PropsWithChildren {
   disclaimer?: ReactNode;
 }
 
-export const Page: FC<PageProps> = ({ title, children, disclaimer }) => {
-  return (
-    <div className={styles.root}>
-      <h1>{title}</h1>
-      {disclaimer && <div className={styles.disclaimer}>{disclaimer}</div>}
-      {children}
-    </div>
-  );
-};
+export const Page: FC<PageProps> = ({ title, children, disclaimer }) => (
+  <div className={styles.root}>
+    <h1>{title}</h1>
+    {disclaimer && <div className={styles.disclaimer}>{disclaimer}</div>}
+    {children}
+  </div>
+);
