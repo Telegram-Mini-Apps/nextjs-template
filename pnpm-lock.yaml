@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@tma.js/sdk-react':
-        specifier: ^2.1.2
-        version: 2.1.2(@types/react@18.3.2)(react@18.3.1)
+        specifier: ^2.1.4
+        version: 2.1.4(@types/react@18.3.2)(react@18.3.1)
       '@tonconnect/ui-react':
         specifier: ^2.0.2
         version: 2.0.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -170,8 +170,8 @@ packages:
   '@swc/helpers@0.5.5':
     resolution: {integrity: sha512-KGYxvIOXcceOAbEk4bi/dVLEK9z8sZ0uBB3Il5b1rhfClSpcX0yfRO0KmTkqR2cnQDymwLB+25ZyMzICg/cm/A==}
 
-  '@tma.js/sdk-react@2.1.2':
-    resolution: {integrity: sha512-NW7bdpF+J+TecJX2jATXeT0LY+s72MiHblK/aCzZSGy4icipw655KMUFsXhVW5Z9MoBsqdufi8EbWd1U9aEEvw==}
+  '@tma.js/sdk-react@2.1.4':
+    resolution: {integrity: sha512-eIR4eQ3EDO/vxNpUhVDOdIDHkjBjYztl5lwxm2rona1p/xGPmV+jDjP45Cwj4gcWm/+FTyGurWi2XrJ13Yk0Ug==}
     peerDependencies:
       '@types/react': ^17.0.0 || ^18.0.0
       react: ^17.0.0 || ^18.0.0
@@ -179,8 +179,8 @@ packages:
       '@types/react':
         optional: true
 
-  '@tma.js/sdk@2.0.2':
-    resolution: {integrity: sha512-qQHxVUt8W3JB9T7esonnAiNhOdfn6JT0sB3X6h6yFu1qwWb3iL4G8hLwK1uSWAByzUepJkeWwwvM7jZ0vqpRDA==}
+  '@tma.js/sdk@2.1.0':
+    resolution: {integrity: sha512-jCHkqoNlEECBCf8ZjoSlHS5Yvs9Z4IrhI0BuJ88i9/RBhmUy/GF87cIQbLUFb5P+4BvsKCLtAM6HPtVVdAkVMQ==}
 
   '@tonconnect/isomorphic-eventsource@0.0.2':
     resolution: {integrity: sha512-B4UoIjPi0QkvIzZH5fV3BQLWrqSYABdrzZQSI9sJA9aA+iC0ohOzFwVVGXanlxeDAy1bcvPbb29f6sVUk0UnnQ==}
@@ -1497,14 +1497,14 @@ snapshots:
       '@swc/counter': 0.1.3
       tslib: 2.6.2
 
-  '@tma.js/sdk-react@2.1.2(@types/react@18.3.2)(react@18.3.1)':
+  '@tma.js/sdk-react@2.1.4(@types/react@18.3.2)(react@18.3.1)':
     dependencies:
-      '@tma.js/sdk': 2.0.2
+      '@tma.js/sdk': 2.1.0
       react: 18.3.1
     optionalDependencies:
       '@types/react': 18.3.2
 
-  '@tma.js/sdk@2.0.2': {}
+  '@tma.js/sdk@2.1.0': {}
 
   '@tonconnect/isomorphic-eventsource@0.0.2':
     dependencies:
