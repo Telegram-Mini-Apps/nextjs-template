@@ -16,6 +16,7 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useRouter as useNavigationRouter } from 'next/navigation';
 
+import { useTelegramMock } from '@/hooks/useTelegramMock';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 import './global.css';
@@ -84,6 +85,12 @@ const App: FC<AppProps> = ({ pageProps, Component }) => {
 };
 
 const Inner: FC<AppProps> = (props) => {
+  // Mock Telegram environment in development mode.
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useTelegramMock();
+  }
+
   const debug = useMemo(() => {
     return isSSR() ? false : retrieveLaunchParams().startParam === 'debug';
   }, []);
