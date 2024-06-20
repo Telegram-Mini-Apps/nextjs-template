@@ -68,9 +68,7 @@ After this, you will see a similar message in your terminal:
 ```
 
 To view the application, you need to open the `Local`
-link (`http://localhost:3000` in this example) in your browser:
-
-![Application](assets/application.png)
+link (`http://localhost:3000` in this example) in your browser.
 
 It is important to note that some libraries in this template, such as `@tma.js/sdk`, are not
 intended for use outside of Telegram.
