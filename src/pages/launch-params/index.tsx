@@ -1,16 +1,11 @@
-import { retrieveLaunchParams } from '@tma.js/sdk-react';
+import { useLaunchParams } from '@tma.js/sdk-react';
 
 import { DisplayData } from '@/components/DisplayData/DisplayData';
 import { Link } from '@/components/Link/Link';
 import { Page } from '@/components/Page/Page';
-import { useDidMount } from '@/hooks/useDidMount';
-import { useMemo } from 'react';
 
 export default function LaunchParamsPage() {
-  const didMount = useDidMount();
-  const lp = useMemo(() => {
-    return didMount ? retrieveLaunchParams() : {} as Record<string, string>;
-  }, [didMount]);
+  const lp = useLaunchParams(true) || {} as Record<string, any>;
 
   return (
     <Page

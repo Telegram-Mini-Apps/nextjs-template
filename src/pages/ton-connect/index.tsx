@@ -1,13 +1,13 @@
 import { useUtils } from '@tma.js/sdk-react';
 import { TonConnectButton, useTonWallet } from '@tonconnect/ui-react';
-import type { FC, ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 import { DisplayData } from '@/components/DisplayData/DisplayData';
 import { Link } from '@/components/Link/Link';
 import { Page } from '@/components/Page/Page';
+import { useDidMount } from '@/hooks/useDidMount';
 
 import styles from './styles.module.css';
-import { useDidMount } from '@/hooks/useDidMount';
 
 function Inner() {
   const wallet = useTonWallet();

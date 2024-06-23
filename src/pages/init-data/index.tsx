@@ -1,10 +1,9 @@
 import { type ReactNode, useMemo } from 'react';
-import { useInitData, retrieveLaunchParams, type User } from '@tma.js/sdk-react';
+import { useInitData, type User, useLaunchParams } from '@tma.js/sdk-react';
 
 import { DisplayData, type DisplayDataRow } from '@/components/DisplayData/DisplayData';
 import { Link } from '@/components/Link/Link';
 import { Page } from '@/components/Page/Page';
-import { useDidMount } from '@/hooks/useDidMount';
 
 import styles from './styles.module.css';
 
@@ -24,9 +23,8 @@ function getUserRows(user: User): DisplayDataRow[] {
 }
 
 export default function InitDataPage() {
-  const didMount = useDidMount();
   const initData = useInitData(true);
-  const initDataRaw = useMemo(() => didMount ? retrieveLaunchParams().initDataRaw : '', [didMount]);
+  const initDataRaw = useLaunchParams(true)?.initDataRaw;
 
   const initDataRows = useMemo<DisplayDataRow[] | undefined>(() => {
     if (!initData || !initDataRaw) {
