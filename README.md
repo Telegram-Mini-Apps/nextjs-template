@@ -122,3 +122,9 @@ from the creators of Next.js.
 
 Check out the [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more
 details.
+
+## Useful Links
+
+- [Platform documentation](https://docs.telegram-mini-apps.com/)
+- [@tma.js/sdk-react documentation](https://docs.telegram-mini-apps.com/packages/tma-js-sdk-react)
+- [Telegram developers community chat](https://t.me/devs)
