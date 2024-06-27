@@ -3,7 +3,6 @@ import {
   type ComponentType,
   type GetDerivedStateFromError,
   type PropsWithChildren,
-  type ReactNode,
 } from 'react';
 
 export interface ErrorBoundaryProps extends PropsWithChildren {
