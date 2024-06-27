@@ -73,7 +73,7 @@ It is important to note that some libraries in this template, such as `@tma.js/s
 intended for use outside of Telegram.
 
 Nevertheless, they appear to function properly. This is because the `src/hooks/useTelegramMock.ts`
-file, which is imported in the application's router (`src/_app.tsx`), employs the `mockTelegramEnv`
+file, which is imported in the application's `Root` component, employs the `mockTelegramEnv`
 function to simulate the Telegram environment. This trick convinces the application that it is
 running in a Telegram-based environment. Therefore, be cautious not to use this function in
 production mode unless you fully understand its implications.
