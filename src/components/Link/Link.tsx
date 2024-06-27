@@ -2,7 +2,7 @@ import { useUtils, classNames } from '@tma.js/sdk-react';
 import { type FC, type MouseEventHandler, type JSX, useCallback } from 'react';
 import { type LinkProps as NextLinkProps, default as NextLink } from 'next/link';
 
-import styles from './Link.module.css';
+import styles from './styles.module.css';
 
 export interface LinkProps extends NextLinkProps, Omit<JSX.IntrinsicElements['a'], 'href'> {
 }

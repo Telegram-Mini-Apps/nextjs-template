@@ -7,11 +7,11 @@ import {
 } from 'react';
 
 export interface ErrorBoundaryProps extends PropsWithChildren {
-  fallback?: ReactNode | ComponentType<{ error: unknown }>;
+  fallback: ComponentType<{ error: Error }>;
 }
 
 interface ErrorBoundaryState {
-  error?: unknown;
+  error?: Error;
 }
 
 export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
@@ -35,10 +35,6 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       },
     } = this;
 
-    return 'error' in this.state
-      ? typeof Fallback === 'function'
-        ? <Fallback error={error} />
-        : Fallback
-      : children;
+    return error ? <Fallback error={error}/> : children;
   }
 }
