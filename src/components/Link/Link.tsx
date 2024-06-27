@@ -2,7 +2,7 @@ import { useUtils, classNames } from '@tma.js/sdk-react';
 import { type FC, type MouseEventHandler, type JSX, useCallback } from 'react';
 import { type LinkProps as NextLinkProps, default as NextLink } from 'next/link';
 
-import styles from './styles.module.css';
+import './styles.css';
 
 export interface LinkProps extends NextLinkProps, Omit<JSX.IntrinsicElements['a'], 'href'> {
 }
@@ -44,7 +44,7 @@ export const Link: FC<LinkProps> = ({
       {...rest}
       href={href}
       onClick={onClick}
-      className={classNames(className, styles.root)}
+      className={classNames(className, 'link')}
     />
   );
 };
