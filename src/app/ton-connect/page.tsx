@@ -1,6 +1,6 @@
 'use client';
 
-import { useUtils } from '@tma.js/sdk-react';
+import { useUtils } from '@telegram-apps/sdk-react';
 import { TonConnectButton, useTonWallet } from '@tonconnect/ui-react';
 import {
   Avatar,

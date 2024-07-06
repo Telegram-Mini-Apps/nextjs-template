@@ -1,6 +1,6 @@
 'use client';
 
-import { useThemeParams } from '@tma.js/sdk-react';
+import { useThemeParams } from '@telegram-apps/sdk-react';
 import { List } from '@telegram-apps/telegram-ui';
 
 import { DisplayData } from '@/components/DisplayData/DisplayData';

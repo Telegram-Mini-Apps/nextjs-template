@@ -1,5 +1,5 @@
 import { useClientOnce } from '@/hooks/useClientOnce';
-import { mockTelegramEnv, parseInitData, retrieveLaunchParams } from '@tma.js/sdk-react';
+import { mockTelegramEnv, parseInitData, retrieveLaunchParams } from '@telegram-apps/sdk-react';
 
 /**
  * Mocks Telegram environment in development mode.
