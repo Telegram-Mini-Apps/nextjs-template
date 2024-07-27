@@ -108,11 +108,11 @@ browser, you will see the following warning:
 This browser warning is normal and can be safely ignored as long as the site is secure. Click
 the `Proceed to localhost (unsafe)` button to continue and view the application.
 
-Once the application is displayed correctly, submit this link as the Mini App link
-to [@BotFather](https://t.me/botfather). Then, navigate
+Once the application is displayed correctly, submit the
+link `https://127.0.0.1:3000` (`https://localhost:3000` is considered as invalid by BotFather) as
+the Mini App link to [@BotFather](https://t.me/botfather). Then, navigate
 to [https://web.telegram.org/k/](https://web.telegram.org/k/), find your bot, and launch the
 Telegram Mini App. This approach provides the full development experience.
-
 
 ## Deploy
 
