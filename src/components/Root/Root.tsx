@@ -10,6 +10,7 @@ import {
   bindMiniAppCSSVars,
   bindThemeParamsCSSVars,
   bindViewportCSSVars,
+  useInitData,
 } from '@telegram-apps/sdk-react';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { AppRoot } from '@telegram-apps/telegram-ui';
@@ -20,12 +21,19 @@ import { useTelegramMock } from '@/hooks/useTelegramMock';
 import { useDidMount } from '@/hooks/useDidMount';
 
 import './styles.css';
+import { setLocale } from '@/core/i18n/locale';
 
 function App(props: PropsWithChildren) {
+  const initData = useInitData();
   const lp = useLaunchParams();
   const miniApp = useMiniApp();
   const themeParams = useThemeParams();
   const viewport = useViewport();
+
+  //set users locale
+  useEffect(() => {
+    setLocale(initData?.user?.languageCode);
+  }, [initData])
 
   useEffect(() => {
     return bindMiniAppCSSVars(miniApp, themeParams);
