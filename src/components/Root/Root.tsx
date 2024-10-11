@@ -19,9 +19,9 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ErrorPage } from '@/components/ErrorPage';
 import { useTelegramMock } from '@/hooks/useTelegramMock';
 import { useDidMount } from '@/hooks/useDidMount';
+import { setLocale } from '@/core/i18n/locale';
 
 import './styles.css';
-import { setLocale } from '@/core/i18n/locale';
 
 function App(props: PropsWithChildren) {
   const initData = useInitData();
