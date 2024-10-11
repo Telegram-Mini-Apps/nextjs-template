@@ -1,12 +1,16 @@
 'use client';
 
 import { Section, Cell, Image, List } from '@telegram-apps/telegram-ui';
+import { useTranslations } from 'next-intl';
 
 import { Link } from '@/components/Link/Link';
+import { LocaleSwitcher } from '@/components/LocaleSwitcher/LocaleSwitcher';
 
 import tonSvg from './_assets/ton.svg';
 
 export default function Home() {
+  const t = useTranslations("i18n");
+
   return (
     <List>
       <Section
@@ -35,6 +39,12 @@ export default function Home() {
         <Link href='/theme-params'>
           <Cell subtitle='Telegram application palette information'>Theme Parameters</Cell>
         </Link>
+      </Section>
+      <Section
+        header={t("header")}
+        footer={t("footer")}
+      >
+        <LocaleSwitcher />
       </Section>
     </List>
   );
