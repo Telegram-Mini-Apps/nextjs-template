@@ -1,11 +1,12 @@
 "use client"
 
-import { localesMap } from "@/core/i18n/config";
-import { setLocale } from "@/core/i18n/locale";
-import { Locale } from "@/core/i18n/types";
 import { Select } from "@telegram-apps/telegram-ui";
 import { useLocale } from "next-intl";
 import { FC } from "react";
+
+import { localesMap } from "@/core/i18n/config";
+import { setLocale } from "@/core/i18n/locale";
+import { Locale } from "@/core/i18n/types";
 
 export const LocaleSwitcher: FC = () => {
   const locale = useLocale();
