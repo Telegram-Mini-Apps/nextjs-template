@@ -1,16 +1,11 @@
 'use client';
 
-import { type PropsWithChildren, useEffect, useMemo, useState } from 'react';
+import { type PropsWithChildren, useEffect } from 'react';
 import {
-  SDKProvider,
+  initData,
+  miniApp,
   useLaunchParams,
-  useMiniApp,
-  useThemeParams,
-  useViewport,
-  bindMiniAppCSSVars,
-  bindThemeParamsCSSVars,
-  bindViewportCSSVars,
-  useInitData,
+  useSignal,
 } from '@telegram-apps/sdk-react';
 import { TonConnectUIProvider } from '@tonconnect/ui-react';
 import { AppRoot } from '@telegram-apps/telegram-ui';
@@ -19,77 +14,58 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { ErrorPage } from '@/components/ErrorPage';
 import { useTelegramMock } from '@/hooks/useTelegramMock';
 import { useDidMount } from '@/hooks/useDidMount';
+import { useClientOnce } from '@/hooks/useClientOnce';
 import { setLocale } from '@/core/i18n/locale';
+import { init } from '@/core/init';
 
 import './styles.css';
 
-function App(props: PropsWithChildren) {
-  const initData = useInitData();
-  const lp = useLaunchParams();
-  const miniApp = useMiniApp();
-  const themeParams = useThemeParams();
-  const viewport = useViewport();
-
-  //set users locale
-  useEffect(() => {
-    setLocale(initData?.user?.languageCode);
-  }, [initData])
-
-  useEffect(() => {
-    return bindMiniAppCSSVars(miniApp, themeParams);
-  }, [miniApp, themeParams]);
-
-  useEffect(() => {
-    return bindThemeParamsCSSVars(themeParams);
-  }, [themeParams]);
-
-  useEffect(() => {
-    return viewport && bindViewportCSSVars(viewport);
-  }, [viewport]);
-
-  return (
-    <AppRoot
-      appearance={miniApp.isDark ? 'dark' : 'light'}
-      platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
-    >
-      {props.children}
-    </AppRoot>
-  );
-}
-
 function RootInner({ children }: PropsWithChildren) {
+  const isDev = process.env.NODE_ENV === 'development';
+
   // Mock Telegram environment in development mode if needed.
-  if (process.env.NODE_ENV === 'development') {
+  if (isDev) {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useTelegramMock();
   }
 
-  const debug = useLaunchParams().startParam === 'debug';
-  const manifestUrl = useMemo(() => {
-    return new URL('tonconnect-manifest.json', window.location.href).toString();
-  }, []);
+  const lp = useLaunchParams();
+  const debug = isDev || lp.startParam === 'debug';
+
+  // Initialize the library.
+  useClientOnce(() => {
+    init(debug);
+  });
+
+  const isDark = useSignal(miniApp.isDark);
+  const initDataUser = useSignal(initData.user);
+
+  // Set the user locale.
+  useEffect(() => {
+    initDataUser && setLocale(initDataUser.languageCode);
+  }, [initDataUser]);
 
   // Enable debug mode to see all the methods sent and events received.
   useEffect(() => {
-    if (debug) {
-      import('eruda').then((lib) => lib.default.init());
-    }
+    debug && import('eruda').then((lib) => lib.default.init());
   }, [debug]);
 
   return (
-    <TonConnectUIProvider manifestUrl={manifestUrl}>
-      <SDKProvider acceptCustomStyles debug={debug}>
-        <App>
-          {children}
-        </App>
-      </SDKProvider>
+    <TonConnectUIProvider manifestUrl="/tonconnect-manifest.json">
+      <AppRoot
+        appearance={isDark ? 'dark' : 'light'}
+        platform={['macos', 'ios'].includes(lp.platform) ? 'ios' : 'base'}
+      >
+        {children}
+      </AppRoot>
     </TonConnectUIProvider>
   );
 }
 
 export function Root(props: PropsWithChildren) {
-  // Unfortunately, Telegram Mini Apps does not allow us to use all features of the Server Side
-  // Rendering. That's why we are showing loader on the server side.
+  // Unfortunately, Telegram Mini Apps does not allow us to use all features of
+  // the Server Side Rendering. That's why we are showing loader on the server
+  // side.
   const didMount = useDidMount();
 
   return didMount ? (

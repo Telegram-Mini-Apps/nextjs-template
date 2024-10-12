@@ -1,15 +1,10 @@
-const defaultLocale = "en";
-const timeZone = "Europe/Amsterdam";
-const locales = [defaultLocale, "ru"] as const;
-const localesMap = [
-  {
-    key: "en",
-    title: "English",
-  },
-  {
-    key: "ru",
-    title: "Русский",
-  },
-]
+export const defaultLocale = 'en';
 
-export { locales, localesMap, defaultLocale, timeZone };
+export const timeZone = 'Europe/Amsterdam';
+
+export const locales = [defaultLocale, 'ru'] as const;
+
+export const localesMap = [
+  { key: 'en', title: 'English' },
+  { key: 'ru', title: 'Русский' },
+];
