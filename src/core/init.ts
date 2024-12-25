@@ -31,7 +31,6 @@ export function init(debug: boolean): void {
   });
 
   // Define components-related CSS variables.
-  viewport.bindCssVars();
   miniApp.bindCssVars();
   themeParams.bindCssVars();
 
