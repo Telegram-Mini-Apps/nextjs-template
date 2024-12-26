@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@telegram-apps/sdk-react": "^2.0.19",
+    "@telegram-apps/sdk-react": "^2.0.22",
     "@telegram-apps/telegram-ui": "^2.1.8",
     "@tonconnect/ui-react": "^2.0.9",
     "eruda": "^3.4.1",
