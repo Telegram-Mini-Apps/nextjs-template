@@ -10,8 +10,8 @@ import 'normalize.css/normalize.css';
 import './_assets/globals.css';
 
 export const metadata: Metadata = {
-  title: 'Your Application Title Goes Here',
-  description: 'Your application description goes here',
+  title: 'WINGSVPN Service',
+  description: 'WINGSVPN — твоя свобода в онлайн-мире, всё, что ты любишь, без границ',
 };
 
 export default async function RootLayout({ children }: PropsWithChildren) {
