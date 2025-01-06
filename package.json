@@ -18,7 +18,8 @@
     "next-intl": "^3.17.6",
     "normalize.css": "^8.0.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "swiper": "^11.2.0"
   },
   "devDependencies": {
     "@types/node": "^20",
