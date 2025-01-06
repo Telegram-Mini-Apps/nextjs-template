@@ -67,5 +67,7 @@ export function Root(props: PropsWithChildren) {
     <ErrorBoundary fallback={ErrorPage}>
       <RootInner {...props} />
     </ErrorBoundary>
-  ) : <div className="root__loading">Loading555</div>;
+  ) : <div className="root__loading">
+    <img width={100} src="/img/packman.gif" alt="" />
+  </div>;
 }

@@ -21,4 +21,103 @@ body {
   background-color: #2E2E3D;
 }
 
+.swiper-pagination-bullet-active {
+  opacity: var(--swiper-pagination-bullet-opacity, 1);
+  background: #d6a21e;
+}
+      .wrapper_slider{
+        height: 40vh;
+        width: 45%;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        }
+      .welcome-slider {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        background-image: url(/img/map.png);
+        background-size: cover;
+        background-color: #2E2E3D;
+        height: 100vh;
+      }
+      .slide-content {
+        height: 80vh;
+        text-align: center;
+      }
+      .slide-content img {
+        padding: 50px 20px;
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto;
+        display: block;
+      }
+      .slide-content h2 {
+        font-size: 18px;
+        margin: 16px 0;
+      }
+      .slide-content p {
+        font-size: 11px;
+      }
+      .buttons {
+        display: flex;
+        margin-top: 16px;
+        justify-content: center;
+        padding: 0px 80px;
+        flex-direction: column;
+      }
+      .skip-btn,
+      .get-started-btn,
+      .next-btn {
+        padding: 8px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        border-radius: 4px;
+        background-color: #D6A21E;
+        color: white;
+      }
+      .skip-btn2 {
+        background-color: #d6a21e00;
+        padding: 0;
+        margin-top:20px;
+        border: none;
+        cursor: pointer;
+        color: #919191;
+      }
 
+      /* Пагинация Swiper */
+      .swiper-pagination-bullet {
+        width: 25px !important; /* Ширина полоски */
+        height: 5px !important; /* Высота полоски */
+        border-radius: 4px !important; /* Скругление углов */
+        background-color: #d6a21e !important; /* Цвет полоски */
+        opacity: 0.5; /* Прозрачность неактивной полоски */
+      }
+
+      .swiper-pagination-bullet-active {
+        opacity: 1; /* Полная видимость активной полоски */
+        background-color: #d6a21e !important;  /* Цвет активной полоски */
+      }
+
+      .swiper-pagination {
+        margin-top: 20px; /* Отступ между слайдами и полосками */
+        display: flex;
+        justify-content: center;
+      }
+
+      .swiper-pagination-bullet:not(:last-child) {
+        margin-right: 8px; /* Расстояние между полосками */
+      }
+
+      .slider_title{
+        color: #fff;
+        font-size: 20px;
+      }
+
+      .slider_desc{
+        color: #D9D9D9;
+        font-size: 20px;
+      }
