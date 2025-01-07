@@ -21,7 +21,12 @@ const WelcomeSlider: React.FC<WelcomeSliderProps> = ({ onSkip, onFinish }) => {
     {
       image: "/img/star.gif",
       title: "Оплата в Telegram Stars!",
-      description: "Оформление подписки стало еще проще: выберите удобный тариф и оплатите его прямо через Telegram. Быстро, безопасно и без лишних сложностей. Начните пользоваться нашим сервисом уже сегодня!",
+      description: "Оформление подписки стало еще проще: выберите удобный тариф и оплатите его прямо через Telegram. Быстро, безопасно и без лишних сложностей.",
+    },
+    {
+      image: "/img/ezgif-6-ed19dc7229.gif",
+      title: "Акция для новых пользователей!",
+      description: "Подпишитесь на наш Telegram-канал и получите 3 дня бесплатного доступа к VPN! Это ваш шанс протестировать наш сервис без ограничений и убедиться в его качестве. Свобода в интернете начинается здесь! Просто подпишитесь, активируйте доступ и наслаждайтесь! 🔓",
     },
     {
       image: "/img/ezgif-6-ed19dc7229.gif",
@@ -29,6 +34,8 @@ const WelcomeSlider: React.FC<WelcomeSliderProps> = ({ onSkip, onFinish }) => {
       description: "VPN-сервис с минимальными настройками. Выберите план и активируйте доступ через Telegram. Оплата принимается через Telegram Stars — это быстро и надежно.",
     },
   ];
+
+
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const [swiperInstance, setSwiperInstance] = useState<any>(null);
@@ -56,15 +63,15 @@ const WelcomeSlider: React.FC<WelcomeSliderProps> = ({ onSkip, onFinish }) => {
         {slides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div className="slide-content">
-              <div className="wrapper_slider" style={{backgroundImage: `url(${slide.image})`}}>
-              {/* <img src={slide.image} alt={slide.title} /> */}
+              <div className="wrapper_slider" style={{ backgroundImage: `url(${slide.image})` }}>
+                {/* <img src={slide.image} alt={slide.title} /> */}
               </div>
-             
+
               <h2 className="slider_title">{slide.title}</h2>
-              <div style={{padding: "0px 15px"}}>
-              <p className="slider_desc" style={{fontSize: "8spx"}}>{slide.description}</p>
+              <div style={{ padding: "0px 15px" }}>
+                <p className="slider_desc" style={{ fontSize: "8spx" }}>{slide.description}</p>
               </div>
-              
+
             </div>
           </SwiperSlide>
         ))}
