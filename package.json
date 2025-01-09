@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@argent/tma-wallet": "^1.19.3",
     "@telegram-apps/sdk-react": "^2.0.22",
     "@telegram-apps/telegram-ui": "^2.1.5",
     "@tonconnect/ui-react": "^2.0.5",
@@ -18,7 +19,8 @@
     "next-intl": "^3.17.6",
     "normalize.css": "^8.0.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "starknet": "^6.11.0"
   },
   "devDependencies": {
     "@types/node": "^20",
