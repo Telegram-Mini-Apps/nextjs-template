@@ -1,6 +1,7 @@
 body {
   background: var(--tg-theme-secondary-bg-color, white);
   font-family: monospace;
+  color: var(--tg-theme-text-color);
 }
 
 
@@ -90,8 +91,8 @@ body {
 
       /* Пагинация Swiper */
       .swiper-pagination-bullet {
-        width: 25px !important; /* Ширина полоски */
-        height: 5px !important; /* Высота полоски */
+        width: 20px !important; /* Ширина полоски */
+        height: 3px !important; /* Высота полоски */
         border-radius: 4px !important; /* Скругление углов */
         background-color: #d6a21e !important; /* Цвет полоски */
         opacity: 0.5; /* Прозрачность неактивной полоски */
@@ -121,3 +122,29 @@ body {
         color: #D9D9D9;
         font-size: 20px;
       }
+
+
+      .menu_btn  svg {
+        color: var(--tg-theme-text-color);
+        font-size: 25px;
+      }
+
+      .menu_wrap{
+        height: 70px;
+        display: flex;
+        justify-content: space-around;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: var(--tg-theme-bg-color, white);;
+        align-items: center;
+      }
+
+      #eruda{
+        display: none !important;
+      }
+
+      .mbt-70px{
+        margin-bottom: 70px;
+      }
+    
