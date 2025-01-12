@@ -8,6 +8,7 @@ import { I18nProvider } from '@/core/i18n/provider';
 import '@telegram-apps/telegram-ui/dist/styles.css';
 import 'normalize.css/normalize.css';
 import './_assets/globals.css';
+import { AppProvider } from '@/contexts/AppContexts';
 
 export const metadata: Metadata = {
   title: 'WINGSVPN Service',
@@ -22,7 +23,9 @@ export default async function RootLayout({ children }: PropsWithChildren) {
     <body>
       <I18nProvider>
         <Root>
+        <AppProvider>
           {children}
+        </AppProvider>
         </Root>
       </I18nProvider>
     </body>

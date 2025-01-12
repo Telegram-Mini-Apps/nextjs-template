@@ -17,52 +17,80 @@ import Menu from '@/components/menu';
 export default function Home() {
   const t = useTranslations('i18n');
   const initDataState = useSignal(initData.state);
-  const username = `Username: ${initDataState?.user?.username}`
-  const firstname = `${initDataState?.user?.firstName}`
-  const img = `${initDataState?.user?.photoUrl}`
+
+  const [platform, setPlatform] = useState<string>('');
+
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+
+    if (/android/.test(userAgent)) {
+      setPlatform('android');
+    } else if (/iphone|ipad|ipod/.test(userAgent)) {
+      setPlatform('ios');
+    } else if (/mac/.test(userAgent)) {
+      setPlatform('macos');
+    } else if (/win/.test(userAgent)) {
+      setPlatform('windows');
+    } else {
+      setPlatform('unknown');
+    }
+  }, []);
+
+  const getLink = () => {
+    switch (platform) {
+      case 'android':
+        return 'https://play.google.com/store/apps/details?id=org.outline.android.client';
+      case 'ios':
+        return 'https://apps.apple.com/app/outline-app/id1356177741';
+      case 'macos':
+        return 'https://getoutline.org/ru/get-started/#step-3';
+      case 'windows':
+        return 'https://getoutline.org/ru/get-started/#step-3';
+      default:
+        return 'https://getoutline.org';
+    }
+  };
+
+
+
 
   return (
     <>
-
+      
       <Page back={true}>
-        <Section>
+      <div className='container'>
+          <h3>Наши тарифы</h3>
 
-          <Cell
-            before={
-              <Image
-                src={img}
-                style={{ backgroundColor: '#007AFF' }}
-              />
-            }
-            subtitle={username}
-          >
-            {firstname}
-          </Cell>
+          <div className='price_btn_block'>
+            <Link className='price_btn_main' href={'/'}> <span>1 месяц</span> <span></span> <span>250 <img className='starPrice' src="/img/star.png" alt="" /></span> </Link>
+            <Link className='price_btn_main' href={'/'}> <span>3 месяца</span> <span>- 10%</span>  <span>675 <img className='starPrice' src="/img/star.png" alt="" /></span> </Link>
+            <Link className='price_btn_main' href={'/'}> <span>6 месяцев</span> <span>- 20%</span> <span>1200 <img className='starPrice' src="/img/star.png" alt="" /></span> </Link>
+          </div>
 
-        </Section>
-        <Section
-          header="Тарифы:"
-          footer="These pages help developer to learn more about current launch information"
-        >
-          <Link href="/one">
-            <Cell subtitle="User data, chat information, technical data">
-              VPN - Сервис сроком на 1 месяц
-              <img width={100} src='img/star.png' alt="" />
-            </Cell>
-          </Link>
-          <Link href="/thee">
-            <Cell subtitle="Platform identifier, Mini Apps version, etc.">
-              VPN - Сервис сроком на 3 месяц. <span>Скидка -10%</span>
-            </Cell>
-          </Link>
-          <Link href="/six">
-            <Cell subtitle="Telegram application palette information">
-              VPN - Сервис сроком на 6 месяц. <span>Cкидка -20%</span>
-            </Cell>
-          </Link>
-        </Section>
+         
+          <h4>Как оплатить:</h4>
+          <p>Просто выберите подходящий тариф и нажмите на него. Telegram предложит оплатить его с помощью Telegram Stars <img className='starPriceText' src="/img/star.png" alt="Telegram Stars" />. После подтверждения оплаты вы сразу получите конфигурационную ссылку.
 
+Эту ссылку нужно скопировать, нажав на нее, а затем открыть приложение Outline Client. В приложении нажмите на кнопку «+», вставьте скопированную конфигурационную строку, и вы сможете подключиться к VPN.
 
+Теперь вы сможете наслаждаться просмотром YouTube в качестве 4K без ограничений!</p>
+          <p>Если у вас еще нет приложения Outline, вы можете скачать его, нажав на кнопку ниже. После нажатия вы будете перенаправлены в магазин приложений, соответствующий вашей платформе.</p>
+          
+          
+    <div style={{ textAlign: 'center', padding: '20px' }}>
+      {platform === 'unknown' ? (
+        <p>Your platform is not recognized. Please visit <a href="https://getoutline.org" target="_blank" rel="noopener noreferrer">getoutline.org</a>.</p>
+      ) : (
+        <a href={getLink()} target="_blank" rel="noopener noreferrer">
+          <button className='price_btn_main_more'>
+            {`Скачать Outline Client для ${platform.toUpperCase()}`}
+          </button>
+        </a>
+      )}
+    </div>
+
+        
+    </div>
         <Menu />
       </Page>
 

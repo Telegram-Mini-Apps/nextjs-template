@@ -24,7 +24,7 @@ const CopyConfig: React.FC<CopyTextProps> = ({ text }) => {
     <p className='text_config'
       style={{
         cursor: "pointer",
-        color: copied ? "green" : "#696767",
+        color: copied ? "green" : "#323069",
 
         textDecoration: "underline",
       }}
