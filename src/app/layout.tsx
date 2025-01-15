@@ -20,15 +20,15 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 
   return (
     <html lang={locale}>
-    <body>
-      <I18nProvider>
-        <Root>
-        <AppProvider>
-          {children}
-        </AppProvider>
-        </Root>
-      </I18nProvider>
-    </body>
+      <body>
+        <I18nProvider>
+          <Root>
+            <AppProvider>
+              {children}
+            </AppProvider>
+          </Root>
+        </I18nProvider>
+      </body>
     </html>
   );
 }

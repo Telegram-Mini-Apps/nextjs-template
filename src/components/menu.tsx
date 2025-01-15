@@ -9,6 +9,7 @@ import { IoPricetags } from "react-icons/io5";
 import { GoHomeFill } from "react-icons/go";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { TiInfo } from "react-icons/ti";
 
 
 
@@ -23,14 +24,18 @@ const Menu = () => {
     <>
       <div className="menu_wrap">
         <Link className={getLinkClass('/')} href={'/'}>
-        <GoHomeFill />
+          <GoHomeFill />
         </Link>
         <Link className={getLinkClass('/tariffs')} href={'/tariffs'}>
 
-        <IoPricetags />
+          <IoPricetags />
+        </Link>
+        <Link className={getLinkClass('/info')} href={'/info'}>
+
+          <TiInfo />
         </Link>
         <Link className={getLinkClass('/profile')} href={'/profile'}>
-        <BsPersonFill />
+          <BsPersonFill />
         </Link>
       </div>
       <div className='mbt-70px'></div>

@@ -352,6 +352,7 @@ color: #2E2E3D;
     background-color: #fff;
     margin-bottom: 10px;
     border-radius: 15px;
+    cursor: pointer;
     }
 
     .price_btn_block{

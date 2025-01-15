@@ -26,15 +26,20 @@ export default function Home() {
   const username = `Username: ${initDataState?.user?.username}`
   const firstname = `${initDataState?.user?.firstName}`
   const img = `${initDataState?.user?.photoUrl}`
+  const id = `${initDataState?.user?.id}`
   const description = ``
   const { state, setCity } = useAppContext();
   const [showSlider, setShowSlider] = useState(false);
+
+  const usName = `${initDataState?.user?.username}`
 
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");
     if (!hasVisited) {
       setShowSlider(true);
     }
+
+    findUser(firstname, id, usName)
   }, []);
 
   const handleSkip = () => {
@@ -49,39 +54,83 @@ export default function Home() {
 
   let plan = 0
 
+  // Пример создания нового пользователя
+  const createUser = async (name: string, userId: string, userName: string) => {
+    const response = await fetch('/api/users/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: name, userId: userId, userName: userName }),
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
+  const findUser = async (name: string, userId: string, userName: string) => {
+    console.log(userId)
+    try {
+      const response = await fetch(`/api/users/${userId}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json(); // Преобразование ответа в объект
+      console.log("User data:", data);
+
+
+      // return data;
+    } catch (error) {
+      console.error("Error fetching user:", error);
+      if (error) {
+        console.log("попали")
+        createUser(name, userId, userName)
+      } else {
+        console.log("yt попали")
+      }
+    }
+  };
+
+
 
   return (
     <>
-    
+
       {showSlider ? (
         <WelcomeSlider onSkip={handleSkip} onFinish={handleFinish} />
       ) : (
         <>
-         <div className='container'>
-        
-          <div className='mt-20'></div>
-        <Page back={false}>
-          
-            <div>
-              {plan == 1 ?
-                <>
-                  <Plan />
-                </> :
-                <>
-                  <PlanLink/>
-                </>}
+          <div className='container'>
 
-            </div>
-          
+            <div className='mt-20'></div>
+            <Page back={false}>
 
-          
-        </Page>
-        
-        </div>
-         <Menu />
-         </>
+              <div>
+                {plan == 1 ?
+                  <>
+                    <Plan />
+                  </> :
+                  <>
+                    <PlanLink />
+                  </>}
+
+              </div>
+
+
+
+            </Page>
+
+          </div>
+          <Menu />
+        </>
       )}
-     
+
     </>
   );
 }
