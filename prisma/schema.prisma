@@ -26,13 +26,15 @@ model User {
 
   userName String @map("user_name")
 
-  tariff String
+  tariff Int? @default(0)
 
-  startedAt DateTime @map("started_at")
+  startedAt DateTime? @map("started_at")
 
-  endedAt DateTime @map("ended_at")
+  endedAt DateTime? @map("ended_at")
 
-  config String
+  config String?
 
-  status Boolean
+  status Boolean?
+
+  promotion String?
 }

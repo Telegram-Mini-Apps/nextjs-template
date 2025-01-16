@@ -16,7 +16,8 @@ export async function GET() {
       startedAt: user.startedAt,
       endedAt: user.endedAt,
       config: user.config,
-      status: user.status
+      status: user.status,
+      promotion: user.promotion
     }));
 
     return NextResponse.json(response);

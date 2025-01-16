@@ -31,7 +31,8 @@ export async function GET(this: any, req: NextRequest, { params }: { params: { i
       startedAt: user.startedAt,
       endedAt: user.endedAt,
       config: user.config,
-      status: user.status
+      status: user.status,
+      promotion: user.promotion
     };
 
     return NextResponse.json(response);

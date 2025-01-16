@@ -11,7 +11,7 @@ export async function POST(req: Request) {
 
   try {
     const newUser = await prisma.user.create({
-      data: body,
+      data: body
     });
 
     const response: UserResponseDto = {
@@ -25,7 +25,8 @@ export async function POST(req: Request) {
       startedAt: newUser.startedAt,
       endedAt: newUser.endedAt,
       config: newUser.config,
-      status: newUser.status
+      status: newUser.status,
+      promotion: newUser.promotion
     };
 
     return NextResponse.json(response, { status: 201 });

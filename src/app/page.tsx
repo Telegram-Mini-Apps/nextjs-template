@@ -17,6 +17,7 @@ import CopyConfig from '@/components/CopyConfig';
 import CitySelector from '@/components/servers';
 import { useAppContext } from '@/contexts/AppContexts';
 import PlanLink from '@/components/PlanLink';
+import { UserResponseDto } from '@/app/dto/user.dto';
 
 // import tonSvg from '';
 
@@ -30,6 +31,9 @@ export default function Home() {
   const description = ``
   const { state, setCity } = useAppContext();
   const [showSlider, setShowSlider] = useState(false);
+
+  const [plan, setPlan] = useState(0);
+  const [promotion, setPromotion] = useState('');
 
   const usName = `${initDataState?.user?.username}`
 
@@ -52,18 +56,20 @@ export default function Home() {
     setShowSlider(false);
   };
 
-  let plan = 0
+
 
   // Пример создания нового пользователя
-  const createUser = async (name: string, userId: string, userName: string) => {
+  const createUser = async (name: string, userId: string, userName: string, promotion: string) => {
     const response = await fetch('/api/users/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: name, userId: userId, userName: userName }),
+      body: JSON.stringify({ name: name, userId: userId, userName: userName, promotion: "new" }),
     });
     const data = await response.json();
+    setPlan(data.tariff)
+    setPromotion(data.promotion)
     console.log(data);
   };
 
@@ -83,14 +89,15 @@ export default function Home() {
 
       const data = await response.json(); // Преобразование ответа в объект
       console.log("User data:", data);
-
+      setPlan(data.tariff)
+      setPromotion(data.promotion)
 
       // return data;
     } catch (error) {
       console.error("Error fetching user:", error);
       if (error) {
         console.log("попали")
-        createUser(name, userId, userName)
+        createUser(name, userId, userName, '')
       } else {
         console.log("yt попали")
       }
@@ -112,9 +119,9 @@ export default function Home() {
             <Page back={false}>
 
               <div>
-                {plan == 1 ?
+                {plan == 0 ?
                   <>
-                    <Plan />
+                    <Plan data={promotion} />
                   </> :
                   <>
                     <PlanLink />

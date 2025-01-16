@@ -2,23 +2,20 @@ export interface CreateUserDto {
   name: string;
   userId: string;
   userName: string;
-}
-
-export interface UpdateUserDto {
-  name?: string;
-  email?: string;
+  tariff: string;
 }
 
 export interface UserResponseDto {
-  id: number;
+  id?: number;
   name: string;
   userId: string;
   userName: string;
-  createdAt: Date;
-  updatedAt: Date;
-  tariff: string
-  startedAt: Date;
-  endedAt: Date;
-  config: string
-  status: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+  tariff?: number | null;
+  startedAt?: Date | null;
+  endedAt?: Date | null;
+  config?: string | null;
+  status?: boolean | null;
+  promotion?: string | null;
 }
