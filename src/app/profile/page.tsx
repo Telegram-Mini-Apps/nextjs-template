@@ -63,9 +63,9 @@ export default function Home() {
           <div>
             <h4>История ваших покупок:</h4>
             <div className='historyBlock'>
-              <p className='historyText'>Покупка "1 месяц" - 20.01.2024 - 23:34</p>
-              <p className='historyText'>Покупка "3 месяц" - 20.09.2024 - 23:34</p>
-              <p className='historyText'>Покупка "1 месяц" - 20.12.2024 - 23:34</p>
+              <p className='historyText'>Покупка &quot;1 месяц&quot; - 20.01.2024 - 23:34</p>
+              <p className='historyText'>Покупка &quot;3 месяц&quot; - 20.09.2024 - 23:34</p>
+              <p className='historyText'>Покупка &quot;1 месяц&quot; - 20.12.2024 - 23:34</p>
             </div>
           </div>
 

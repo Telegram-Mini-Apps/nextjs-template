@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { BsShieldLock } from 'react-icons/bs';
 import { FaStackExchange } from 'react-icons/fa';
 import { addAbortSignal } from 'stream';
-
+import Image from 'next/image';
 interface PlanProps {
   data: string;
 }
@@ -153,7 +153,7 @@ const Plan: React.FC<PlanProps> = ({ data }) => {
                 onClick={() => setSubscribed(true)}
               >
                 3 дня <span className="subscribe">Подписка на наш канал</span>
-                <img className="starPrice" src="/img/star.gif" alt="" />
+                <Image className="starPrice" src="/img/star.gif" alt="" />
               </Link>
             ) : (
               <button
@@ -166,9 +166,9 @@ const Plan: React.FC<PlanProps> = ({ data }) => {
             )}
           </> : ''}
 
-        <Link className='price_btn_main' href={'/'}> <span>30 дней</span> <span></span> <span>250 <img className='starPrice' src="/img/star.gif" alt="" /></span> </Link>
-        <Link className='price_btn_main' href={'/'}> <span>90 дней</span> <span>- 10%</span>  <span>675 <img className='starPrice' src="/img/star.gif" alt="" /></span> </Link>
-        <Link className='price_btn_main' href={'/'}> <span>180 дней</span> <span>- 20%</span> <span>1200 <img className='starPrice' src="/img/star.gif" alt="" /></span> </Link>
+        <Link className='price_btn_main' href={'/'}> <span>30 дней</span> <span></span> <span>250 <Image className='starPrice' src="/img/star.gif" alt="" /></span> </Link>
+        <Link className='price_btn_main' href={'/'}> <span>90 дней</span> <span>- 10%</span>  <span>675 <Image className='starPrice' src="/img/star.gif" alt="" /></span> </Link>
+        <Link className='price_btn_main' href={'/'}> <span>180 дней</span> <span>- 20%</span> <span>1200 <Image className='starPrice' src="/img/star.gif" alt="" /></span> </Link>
         <Link className='price_btn_main_more' href={"/"}>Подробнее</Link>
       </div>
     </>

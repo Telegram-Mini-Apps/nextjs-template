@@ -56,41 +56,41 @@ export default function Home() {
 
   return (
     <>
-      
+
       <Page back={true}>
-      <div className='container'>
+        <div className='container'>
           <h3>Наши тарифы</h3>
 
           <div className='price_btn_block'>
-            <Link className='price_btn_main' href={'/'}> <span>1 месяц</span> <span></span> <span>250 <img className='starPrice' src="/img/star.png" alt="" /></span> </Link>
-            <Link className='price_btn_main' href={'/'}> <span>3 месяца</span> <span>- 10%</span>  <span>675 <img className='starPrice' src="/img/star.png" alt="" /></span> </Link>
-            <Link className='price_btn_main' href={'/'}> <span>6 месяцев</span> <span>- 20%</span> <span>1200 <img className='starPrice' src="/img/star.png" alt="" /></span> </Link>
+            <Link className='price_btn_main' href={'/'}> <span>1 месяц</span> <span></span> <span>250 <Image className='starPrice' src="/img/star.png" alt="" /></span> </Link>
+            <Link className='price_btn_main' href={'/'}> <span>3 месяца</span> <span>- 10%</span>  <span>675 <Image className='starPrice' src="/img/star.png" alt="" /></span> </Link>
+            <Link className='price_btn_main' href={'/'}> <span>6 месяцев</span> <span>- 20%</span> <span>1200 <Image className='starPrice' src="/img/star.png" alt="" /></span> </Link>
           </div>
 
-         
+
           <h4>Как оплатить:</h4>
-          <p>Просто выберите подходящий тариф и нажмите на него. Telegram предложит оплатить его с помощью Telegram Stars <img className='starPriceText' src="/img/star.png" alt="Telegram Stars" />. После подтверждения оплаты вы сразу получите конфигурационную ссылку.
+          <p>Просто выберите подходящий тариф и нажмите на него. Telegram предложит оплатить его с помощью Telegram Stars <Image className='starPriceText' src="/img/star.png" alt="Telegram Stars" />. После подтверждения оплаты вы сразу получите конфигурационную ссылку.
 
-Эту ссылку нужно скопировать, нажав на нее, а затем открыть приложение Outline Client. В приложении нажмите на кнопку «+», вставьте скопированную конфигурационную строку, и вы сможете подключиться к VPN.
+            Эту ссылку нужно скопировать, нажав на нее, а затем открыть приложение Outline Client. В приложении нажмите на кнопку «+», вставьте скопированную конфигурационную строку, и вы сможете подключиться к VPN.
 
-Теперь вы сможете наслаждаться просмотром YouTube в качестве 4K без ограничений!</p>
+            Теперь вы сможете наслаждаться просмотром YouTube в качестве 4K без ограничений!</p>
           <p>Если у вас еще нет приложения Outline, вы можете скачать его, нажав на кнопку ниже. После нажатия вы будете перенаправлены в магазин приложений, соответствующий вашей платформе.</p>
-          
-          
-    <div style={{ textAlign: 'center', padding: '20px' }}>
-      {platform === 'unknown' ? (
-        <p>Your platform is not recognized. Please visit <a href="https://getoutline.org" target="_blank" rel="noopener noreferrer">getoutline.org</a>.</p>
-      ) : (
-        <a href={getLink()} target="_blank" rel="noopener noreferrer">
-          <button className='price_btn_main_more'>
-            {`Скачать Outline Client для ${platform.toUpperCase()}`}
-          </button>
-        </a>
-      )}
-    </div>
 
-        
-    </div>
+
+          <div style={{ textAlign: 'center', padding: '20px' }}>
+            {platform === 'unknown' ? (
+              <p>Your platform is not recognized. Please visit <a href="https://getoutline.org" target="_blank" rel="noopener noreferrer">getoutline.org</a>.</p>
+            ) : (
+              <a href={getLink()} target="_blank" rel="noopener noreferrer">
+                <button className='price_btn_main_more'>
+                  {`Скачать Outline Client для ${platform.toUpperCase()}`}
+                </button>
+              </a>
+            )}
+          </div>
+
+
+        </div>
         <Menu />
       </Page>
 

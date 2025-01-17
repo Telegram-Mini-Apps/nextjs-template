@@ -44,7 +44,7 @@ export default function Home() {
     }
 
     findUser(firstname, id, usName)
-  }, []);
+  }, [firstname, id, usName]);
 
   const handleSkip = () => {
     localStorage.setItem("hasVisited", "true");
