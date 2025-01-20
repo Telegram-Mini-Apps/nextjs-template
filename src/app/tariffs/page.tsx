@@ -1,6 +1,6 @@
 'use client';
 
-import { Section, Cell, Image, List } from '@telegram-apps/telegram-ui';
+
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/components/Link/Link';
@@ -11,7 +11,7 @@ import { useEffect, useState } from 'react';
 import WelcomeSlider from '@/components/screen/Welcome';
 import { FiGlobe, FiHome, FiSettings, FiUser } from "react-icons/fi";
 import Menu from '@/components/menu';
-
+import Image from 'next/image';
 // import tonSvg from '';
 
 export default function Home() {
@@ -62,14 +62,14 @@ export default function Home() {
           <h3>Наши тарифы</h3>
 
           <div className='price_btn_block'>
-            <Link className='price_btn_main' href={'/'}> <span>1 месяц</span> <span></span> <span>250 <Image className='starPrice' src="/img/star.png" alt="" /></span> </Link>
-            <Link className='price_btn_main' href={'/'}> <span>3 месяца</span> <span>- 10%</span>  <span>675 <Image className='starPrice' src="/img/star.png" alt="" /></span> </Link>
-            <Link className='price_btn_main' href={'/'}> <span>6 месяцев</span> <span>- 20%</span> <span>1200 <Image className='starPrice' src="/img/star.png" alt="" /></span> </Link>
+            <Link className='price_btn_main' href={'/'}> <span>1 месяц</span> <span></span> <span>250 <img className='starPrice' src="/img/star.gif" alt="" /></span> </Link>
+            <Link className='price_btn_main' href={'/'}> <span>3 месяца</span> <span>- 10%</span>  <span>675 <img className='starPrice' src="/img/star.gif" alt="" /></span> </Link>
+            <Link className='price_btn_main' href={'/'}> <span>6 месяцев</span> <span>- 20%</span> <span>1200 <img className='starPrice' src="/img/star.gif" alt="" /></span> </Link>
           </div>
 
 
           <h4>Как оплатить:</h4>
-          <p>Просто выберите подходящий тариф и нажмите на него. Telegram предложит оплатить его с помощью Telegram Stars <Image className='starPriceText' src="/img/star.png" alt="Telegram Stars" />. После подтверждения оплаты вы сразу получите конфигурационную ссылку.
+          <p>Просто выберите подходящий тариф и нажмите на него. Telegram предложит оплатить его с помощью Telegram Stars <img className='starPriceText' src="/img/star.gif" alt="Telegram Stars" />. После подтверждения оплаты вы сразу получите конфигурационную ссылку.
 
             Эту ссылку нужно скопировать, нажав на нее, а затем открыть приложение Outline Client. В приложении нажмите на кнопку «+», вставьте скопированную конфигурационную строку, и вы сможете подключиться к VPN.
 

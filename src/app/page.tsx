@@ -36,7 +36,7 @@ export default function Home() {
   const [promotion, setPromotion] = useState('');
 
   const usName = `${initDataState?.user?.username}`
-
+  const userId = 1414885703
   useEffect(() => {
     const hasVisited = localStorage.getItem("hasVisited");
     if (!hasVisited) {
@@ -55,6 +55,7 @@ export default function Home() {
     localStorage.setItem("hasVisited", "true");
     setShowSlider(false);
   };
+
 
 
 

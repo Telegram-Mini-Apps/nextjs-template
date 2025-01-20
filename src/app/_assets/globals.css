@@ -360,7 +360,7 @@ span {
   color: #fff;
   display: flex;
   text-decoration: none;
-  width: 80%;
+  width: 270px;
   padding: 20px;
   justify-content: space-between;
   align-items: baseline;
@@ -374,7 +374,7 @@ span {
   color: #323069;
   display: flex;
   text-decoration: none;
-  width: 150px;
+  width: 270px;
   padding: 20px;
   justify-content: space-between;
   align-items: baseline;
@@ -389,7 +389,7 @@ span {
   text-align: center;
   border: #323069 1px solid;
   text-decoration: none;
-  width: 80%;
+  width: 270px;
   padding: 20px;
   background-color: #fff;
   margin-bottom: 10px;
