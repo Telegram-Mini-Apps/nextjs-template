@@ -1,5 +1,5 @@
 export function isRecord(v: unknown): v is Record<string, unknown> {
-  return !!v && typeof v === "object" && !Array.isArray(v);
+  return !!v && typeof v === 'object' && !Array.isArray(v);
 }
 
 /**
@@ -16,7 +16,7 @@ export function isRecord(v: unknown): v is Record<string, unknown> {
 export function classNames(...values: any[]): string {
   return values
     .map((value) => {
-      if (typeof value === "string") {
+      if (typeof value === 'string') {
         return value;
       }
 
@@ -31,7 +31,7 @@ export function classNames(...values: any[]): string {
       }
     })
     .filter(Boolean)
-    .join(" ");
+    .join(' ');
 }
 
 type UnionStringKeys<U> = U extends U

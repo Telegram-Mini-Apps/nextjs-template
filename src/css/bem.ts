@@ -1,4 +1,4 @@
-import { classNames, isRecord } from "./classnames";
+import { classNames, isRecord } from './classnames';
 
 export interface BlockFn {
   (...mods: any): string;

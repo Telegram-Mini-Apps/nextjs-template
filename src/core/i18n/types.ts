@@ -1,4 +1,4 @@
-import type { locales } from "./config";
+import type { locales } from './config';
 
 type Locale = (typeof locales)[number];
 

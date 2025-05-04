@@ -1,20 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
+'use client';
 
-import { useMemo } from "react";
+import { useMemo } from 'react';
 import {
   initDataRaw as _initDataRaw,
   initDataState as _initDataState,
   type User,
   useSignal,
-} from "@telegram-apps/sdk-react";
-import { List, Placeholder } from "@telegram-apps/telegram-ui";
+} from '@telegram-apps/sdk-react';
+import { List, Placeholder } from '@telegram-apps/telegram-ui';
 
 import {
   DisplayData,
   type DisplayDataRow,
-} from "@/components/DisplayData/DisplayData";
-import { Page } from "@/components/Page";
+} from '@/components/DisplayData/DisplayData';
+import { Page } from '@/components/Page';
 
 function getUserRows(user: User): DisplayDataRow[] {
   return Object.entries(user).map(([title, value]) => ({ title, value }));
@@ -29,12 +29,12 @@ export default function InitDataPage() {
       return;
     }
     return [
-      { title: "raw", value: initDataRaw },
+      { title: 'raw', value: initDataRaw },
       ...Object.entries(initDataState).reduce<DisplayDataRow[]>(
         (acc, [title, value]) => {
           if (value instanceof Date) {
             acc.push({ title, value: value.toISOString() });
-          } else if (!value || typeof value !== "object") {
+          } else if (!value || typeof value !== 'object') {
             acc.push({ title, value });
           }
           return acc;
@@ -75,7 +75,7 @@ export default function InitDataPage() {
           <img
             alt="Telegram sticker"
             src="https://xelene.me/telegram.gif"
-            style={{ display: "block", width: "144px", height: "144px" }}
+            style={{ display: 'block', width: '144px', height: '144px' }}
           />
         </Placeholder>
       </Page>
@@ -84,12 +84,12 @@ export default function InitDataPage() {
   return (
     <Page>
       <List>
-        <DisplayData header={"Init Data"} rows={initDataRows} />
-        {userRows && <DisplayData header={"User"} rows={userRows} />}
+        <DisplayData header={'Init Data'} rows={initDataRows} />
+        {userRows && <DisplayData header={'User'} rows={userRows} />}
         {receiverRows && (
-          <DisplayData header={"Receiver"} rows={receiverRows} />
+          <DisplayData header={'Receiver'} rows={receiverRows} />
         )}
-        {chatRows && <DisplayData header={"Chat"} rows={chatRows} />}
+        {chatRows && <DisplayData header={'Chat'} rows={chatRows} />}
       </List>
     </Page>
   );

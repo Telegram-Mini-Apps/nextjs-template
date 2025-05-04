@@ -1,17 +1,17 @@
-import { openLink } from "@telegram-apps/sdk-react";
-import { type FC, type MouseEventHandler, type JSX, useCallback } from "react";
+import { openLink } from '@telegram-apps/sdk-react';
+import { type FC, type MouseEventHandler, type JSX, useCallback } from 'react';
 import {
   type LinkProps as NextLinkProps,
   default as NextLink,
-} from "next/link";
+} from 'next/link';
 
-import { classNames } from "@/css/classnames";
+import { classNames } from '@/css/classnames';
 
-import "./Link.css";
+import './Link.css';
 
 export interface LinkProps
   extends NextLinkProps,
-    Omit<JSX.IntrinsicElements["a"], "href"> {}
+    Omit<JSX.IntrinsicElements['a'], 'href'> {}
 
 export const Link: FC<LinkProps> = ({
   className,
@@ -26,10 +26,10 @@ export const Link: FC<LinkProps> = ({
       // Compute if target path is external. In this case we would like to open link using
       // TMA method.
       let path: string;
-      if (typeof href === "string") {
+      if (typeof href === 'string') {
         path = href;
       } else {
-        const { search = "", pathname = "", hash = "" } = href;
+        const { search = '', pathname = '', hash = '' } = href;
         path = `${pathname}?${search}#${hash}`;
       }
 
@@ -52,7 +52,7 @@ export const Link: FC<LinkProps> = ({
       {...rest}
       href={href}
       onClick={onClick}
-      className={classNames(className, "link")}
+      className={classNames(className, 'link')}
     />
   );
 };
