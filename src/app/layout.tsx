@@ -18,14 +18,12 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const locale = await getLocale();
 
   return (
-    <html lang={locale}>
-    <body>
-      <I18nProvider>
-        <Root>
-          {children}
-        </Root>
-      </I18nProvider>
-    </body>
+    <html lang={locale} suppressHydrationWarning>
+      <body>
+        <I18nProvider>
+          <Root>{children}</Root>
+        </I18nProvider>
+      </body>
     </html>
   );
 }

@@ -1,8 +1,8 @@
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import React from "react";
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import React from 'react';
 
-import { timeZone } from "./config";
+import { timeZone } from './config';
 
 const I18nProvider: React.FC<React.PropsWithChildren> = async ({
   children,

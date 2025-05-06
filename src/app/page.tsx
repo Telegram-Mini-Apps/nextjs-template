@@ -25,6 +25,7 @@ export default function Home() {
                 <Image
                   src={tonSvg.src}
                   style={{ backgroundColor: '#007AFF' }}
+                  alt="TON Logo"
                 />
               }
               subtitle="Connect your TON wallet"
@@ -54,7 +55,7 @@ export default function Home() {
           </Link>
         </Section>
         <Section header={t('header')} footer={t('footer')}>
-          <LocaleSwitcher/>
+          <LocaleSwitcher />
         </Section>
       </List>
     </Page>
