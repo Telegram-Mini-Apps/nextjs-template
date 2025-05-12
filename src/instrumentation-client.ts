@@ -5,8 +5,8 @@ import { retrieveLaunchParams } from '@telegram-apps/sdk-react';
 import { init } from './core/init';
 import { mockEnv } from './mockEnv';
 
-mockEnv()
-  .then(() => {
+mockEnv().then(() => {
+  try {
     const launchParams = retrieveLaunchParams();
     const { tgWebAppPlatform: platform } = launchParams;
     const debug =
@@ -18,6 +18,8 @@ mockEnv()
       debug,
       eruda: debug && ['ios', 'android'].includes(platform),
       mockForMacOS: platform === 'macos',
-    }).catch(console.error);
-  })
-  .catch(console.error);
+    });
+  } catch (e) {
+    console.log(e);
+  }
+});
