@@ -1,5 +1,5 @@
 import { openLink } from '@telegram-apps/sdk-react';
-import { type FC, type MouseEventHandler, type JSX, useCallback } from 'react';
+import { type FC, type MouseEventHandler, useCallback } from 'react';
 import {
   type LinkProps as NextLinkProps,
   default as NextLink,
@@ -11,7 +11,7 @@ import './Link.css';
 
 export interface LinkProps
   extends NextLinkProps,
-    Omit<JSX.IntrinsicElements['a'], 'href'> {}
+    Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof NextLinkProps> {}
 
 export const Link: FC<LinkProps> = ({
   className,
