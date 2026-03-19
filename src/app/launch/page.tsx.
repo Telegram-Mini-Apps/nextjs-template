@@ -1,0 +1,37 @@
+'use client';
+
+import { useState } from 'react';
+import { List, Section, Cell } from '@telegram-apps/telegram-ui';
+import { Page } from '@/components/Page';
+
+export default function LaunchPage() {
+  const [points, setPoints] = useState(0);
+
+  return (
+    <Page back={true}>
+      <List>
+        <Section>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '40px 0', gap: '20px' }}>
+            <h1 style={{ fontSize: '48px', margin: 0, color: '#007AFF' }}>{points}</h1>
+            <p style={{ color: 'gray', margin: 0 }}>Unity Points</p>
+            
+            <div 
+              onClick={() => setPoints(points + 1)}
+              style={{ cursor: 'pointer', active: { transform: 'scale(0.95)' } }}
+            >
+              <img 
+                src="/apple-touch-icon.png.jpg" // Zorg dat de foto hier staat!
+                style={{ width: '220px', borderRadius: '50%', boxShadow: '0 0 30px rgba(0,122,255,0.5)', border: '5px solid white' }} 
+              />
+            </div>
+          </div>
+        </Section>
+        <Section header="Game Manual">
+          <Cell subtitle="Tap the Unbreakable Owl to earn points for your ranking!">
+            How to play
+          </Cell>
+        </Section>
+      </List>
+    </Page>
+  );
+}

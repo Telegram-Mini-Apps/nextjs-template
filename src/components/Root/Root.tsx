@@ -29,7 +29,8 @@ function RootInner({ children }: PropsWithChildren) {
   }, [initDataUser]);
 
   return (
-    <TonConnectUIProvider manifestUrl="/tonconnect-manifest.json">
+    <TonConnectUIProvider manifestUrl="https://telegram-mini-app-stars-payments-og.vercel.app/manifest.json">
+
       <AppRoot
         appearance={isDark ? 'dark' : 'light'}
         platform={
